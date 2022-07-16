@@ -559,6 +559,462 @@ console.log(fizzBuzz(num))
 
 
 
+// Module 5 Objects
+
+
+console.log('Module 5 Objects')
+
+//Lec 1 Basics
+console.log('Lec 1 Basics')
+
+// Object orientd programming (OOP)
+const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+
+    isVisible: true,
+
+    // draw: fuction {
+    //     console.log('draw')
+    // }     
+}
+
+// const circle2 = {
+//     radius: 1,
+//     location: {
+//         x: 1,
+//         y: 1
+//     },
+
+//     isVisible: true,
+
+//     // draw: fuction {
+//     //     console.log('draw')
+//     // }     
+// }
+
+// Lec 2 Factory Function
+console.log('Lec 2 Factory Fucntion')
+
+// How to create factory functions
+// Factory Fuctions-> just like factory produces objects Factory Fuction Produces Fuctions
+
+
+// Funtion is for returning the object
+function createCircle(radius) {
+    return {
+        // Hard coded values
+        // radius: radius,// if key value are same we can remove value
+
+        radius,
+    
+        // draw: fuction() {
+        //     console.log('draw')
+        // } 
+        draw() {
+            console.log('draw')
+        }
+ }
+}
+
+const circle1 = createCircle(1)
+console.log(circle1)
+const circle2 = createCircle(2)
+console.log(circle2)
+
+// Lec 3 Constructor Fuction
+
+console.log('Lec 3 Constructor Fuction')
+
+// Job of this function is to conturct function
+
+// Camel Notation: oneTwoThreeFour
+// Pascal Notation: OneTwoThreeFour
+
+function Circle(radius) {
+    // 'this' is a reference to a object using this fuction
+    // this references empty object
+    this.radius = radius
+    this.draw = function () {
+        console.log('draw')
+    }
+}
+// using 'new' to create new object
+ // new create empty object const x={}
+ // it set 'this' to point circle3 object
+ // and finally it return object from Circle fuction.
+const circle3 = new Circle(1)
+
+// Which pattern is good
+// Ans. Both are good Patterns
+
+// Lec 4 Dynamic Nature of Object
+
+console.log('Lec 4 Dynamic Nature of Object')
+
+//Dynamic Object-> Means once we create this we can always add new properties and also can remove exsitence properties
+
+
+const circle4 = {
+    radius:1
+}
+
+// adding new Properties to the object
+circle4.color = 'yellow'
+circle4.draw = function () {
+    console.log('circle4')
+}
+
+console.log(circle4)
+
+// Removing Properties from the Circle
+
+delete circle4.color
+delete circle4.draw
+
+console.log(circle4)
+
+// Notice we used const keyword  but we can change the content of it, but we can't assign circle4 to the new object
+
+// ex= circle4{}
+
+// Lec 5 Constructor Property
+
+// every object in java script have property called constructor that refrence the fuction that is used to create that object
+
+console.log('Lec 5 Constructor Property')
+
+function createCircle(radius) {
+    return {
+        radius,
+        draw() {
+            console.log('draw')
+        }
+ }
+}
+const circle6 = createCircle(1)
+
+function Circle(radius) {
+    this.radius = radius
+    this.draw = function () {
+        console.log('draw')
+    }
+}
+
+const another = new Circle(1)
+
+// another.constructor
+// circle.cosntructor
+// built in constructor fuction f Oject()
+
+let x6 = {}
+// let x = new Object();
+
+// Built in constuctor in java Script
+
+// new String(); // we use '', "", `` literals
+// Boolean(); // we use true , false
+// new Number() // 1,2 3..
+
+// Lec 6 Fuctions are Object
+
+console.log('Lec 6 Fuctions are Object')
+
+function Circle(radius) {
+    this.radius = radius
+    this.draw = function () {
+        console.log('draw')
+    }
+}
+
+//Circle.name
+//Circle.lenght -> No. of  Arguments
+//Circle.constructor -> this constructor fuction is used to create this object
+
+// Ex-> we can do it manually
+// Using Built in Constructor Function()
+
+// Internally represeted like this
+const Circle7 = new Function('radius', `
+this.radius = radius
+this.draw = function () {
+    console.log('draw')
+}
+`) // backtic for multiple lines
+
+//calling the
+
+const circle8 = new Circle7(1)
+
+// varuous Methods
+    // Circle7.call
+
+// Circle7.call({},1) == cosnt another= new Circle7(1)
+    
+    //Circle7.apply
+//Circle.apply({}, [1,2,3]) // Passing in array.
+
+// Lec 7 Valus VS Reference Types
+console.log('Lec 7 Valus VS Reference Types')
+
+    // Value Types
+        // Number
+        // String
+        // Boolean
+        // Symbol
+        // Undefined
+        // Null
+    // Reference Types
+        // Object
+        // Fuctions
+        // Array
+
+// Value Type
+// p and q are independent variable
+let p = 10
+let q = p
+
+x = 20
+
+// Reference Type
+
+let X = { value: 10 }
+let Y = X
+
+X.value = 20
+
+// fuction
+
+let Number = 10
+function increase(Number) {
+    Number++
+}
+increase(Number);
+console.log(Number)
+
+let obj = {value: 10}
+function increase(obj) {
+    obj.value++
+}
+increase(obj);
+console.log(obj)
+
+// Note: primitive(Values types) are copied by there values and Reference types are pointed by there address
+
+// Lec 8 Enumerating Properties of an Object
+console.log('Lec 8 Enumerating Properties of an Object')
+
+// In this we gonna use how to use for in and for of loop to itrate over object
+
+const Circle2 = {
+    radius: 1,
+    draw() {
+        console.log('draw')
+    }
+}
+
+for (let key in Circle2) {
+    console.log(key, Circle2[key])
+}
+
+// Note for of loop only works on itrables such as arrays and maps
+
+// for (let key of Circle2) {
+//     console.log(key)
+// }
+
+// acssecing the keys
+for (let key of Object.keys(Circle2)) {
+    console.log(key)
+}
+
+// accessing the key- value pair
+for (let entry of Object.entries(Circle2)) {
+    console.log(entry)
+}
+
+//Object.
+
+// checking if a given object contain particular method or propety
+if ('radius' in circle) console.log('yes')
+
+// Lec 9 Cloning an Object
+
+console.log('Lec 9 Cloning an Object')
+
+
+const Circle3 = {
+    radius: 1,
+    draw() {
+        console.log('draw')
+    }
+}
+
+const another2 = {}
+
+for (let key in Circle3)
+    another2[key] = Circle3[key]
+
+// equivalent to :-
+//another2['radius'] = Circle3[key]
+
+console.log(another2)
+
+// this technique of cloning is old
+
+// Method second way (Good way)
+
+const another3 = Object.assign({}, Circle3);
+console.log(another3)
+
+// you can also pass non empty object
+
+const another4 = Object.assign({
+    color: 'yellow'
+}, Circle3);
+console.log(another4)
+
+// Third Way to clone
+
+// spered operator (...)
+const another5 = { ...Circle3}
+console.log(another5)
+
+// Lec 10 Garbage Collection
+
+// In some laguages we have to allocate and deallocate memory to objects manually
+
+// But in JavaScript in is allocation and deallocation happend automatically by using garbage collection.
+
+console.log('Lec 10 Garbage Collection')
+
+// Lec 10 Math Object
+
+console.log('Lec 10 Math Object')
+
+// Math.floor
+// Math.ceil
+// Math.random
+// Math.pi
+// Math.round
+// Math.max
+// Math.min
+// and many more
+
+// Lec 12 String Object
+
+console.log('Lec 12 String Object')
+
+// In JavaScript we have two kind of Strings
+
+// String primitive
+const message2 = 'h1'
+
+// message2. // javascript automatically wraps this in string objects
+
+// String Object
+const str = new String('hello')
+
+console.log(typeof(message2))
+console.log(typeof (str))
+
+// Popular String Methods
+        //srt_name.lenght
+        //str[0], str[1]
+        //str.includes('my')
+        //srt.startsWtith('This')
+        //srt.endsWith('e')
+        //srt.indexOf('my')
+        //srt.replace('first', 'second')
+        //srt.toUpperCase
+        //str.toLowerCase
+        //srt.trim()-> remove white space
+        //str.trimLeft()
+        //str.split('')
+
+
+// Escape Notation in Java Script
+
+        // ex single quote \' in sting
+        // \n-> new line
+        // 
+
+// Lec 13 Template Literals
+
+
+// First (ugly method to create a customise string)
+
+const st =
+    `This is my/n\'first\'message`
+
+// Object {} literals
+// Boolean literals true, false
+// stirng literals '', ""
+// Template Literals (ES6) ``
+
+const goodString = `This is my 
+'first' message`
+
+console.log(goodString)
+
+// This is useful to send  email to users
+
+//ex -
+    const string2 = 
+    `Hi Anurag,
+    Thankyou for joining my mailing list
+    
+    Regards,
+    Anurag`
+
+console.log(string2)
+    
+// Adding place holders-> adding name Dynamically.
+
+//Old method
+// const name = 'av'
+// const message = 'Hi'+ name+ ',\n'
+
+
+// New Method
+const name2= 'Anurag'
+const string3 = 
+    `Hi ${name2} ${3+5},
+    Thankyou for joining my mailing list
+    
+    Regards,
+    Anurag`
+
+console.log(string3)
+    
+
+// Lec 14 Date Object
+console.log('Lec 14 Date')
+
+const current_date = new Date()
+const date1 = new Date('May 11 2018 09:00')
+
+const date2 = new Date(2018, 4, 11, 6, 0)
+
+// Get Methods and Set Methods
+//current_date.get // Methods
+current_date.setFullYear(2017);
+
+console.log(current_date.toDateString())
+console.log(current_date.toTimeString())
+console.log(current_date.toISOString())
+
+
+
+
+
+
+
+
+
 
 
 
