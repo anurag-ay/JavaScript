@@ -602,6 +602,23 @@ console.log('Lec 2 Factory Fucntion')
 // How to create factory functions
 // Factory Fuctions-> just like factory produces objects Factory Fuction Produces Fuctions
 
+// function createCircle(radius) {
+//     const circle={
+//         // Hard coded values
+//         // radius: radius,// if key value are same we can remove value
+
+//         radius,
+    
+//         // draw: fuction() {
+//         //     console.log('draw')
+//         // } 
+//         draw() {
+//             console.log('draw')
+//         }
+//     }
+//     return circle
+// }
+
 
 // Funtion is for returning the object
 function createCircle(radius) {
@@ -1007,49 +1024,130 @@ console.log(current_date.toDateString())
 console.log(current_date.toTimeString())
 console.log(current_date.toISOString())
 
+// Lec 15 Exercise Address Object
+console.log('Lec 15 Exercise Address Object')
+
+const Address = {
+    street:"Gandhi Marg",
+    city:"Lucknow",
+    zipCode:"226003",
+}
+
+function showAddress(Address) {
+    for (let key in Address)
+        console.log(key,Address[key])
+}
+
+showAddress(Address)
+
+// Lec 16 Exericise Factory and constructor Fuction
+
+console.log('Lec 16 Exericise Factory and constructor Fuction')
+
+// Using factory fuction
+
+function Address2(street, city, zipCode){
+    return {
+        street,
+        city,
+        zipCode
+    }
+}
+
+let new_address= Address2('Gandhi Marg', 'Lucknow', 226003)
+
+function showAddress2(Address2) {
+    for (let key in Address2) {
+        console.log(key, Address2[key])
+    }
+}
+
+showAddress2(new_address)
 
 
+// Cosntructor Fuction
+
+function Address3(street, city, zipCode) {
+    this.street = street
+    this.city = city
+    this.zipCode= zipCode
+}
+
+// Lec 17 Object Equality
+
+console.log('Lec 17 Object Equality')
 
 
+let address1 = new Address3('a','b','c')
+let address2 = new Address3('a', 'b', 'c')
 
+let address3 = address2 // here they are pointing to same memory location
 
+function Address3(street, city, zipCode) {
+    this.street = street
+    this.city = city
+    this.zipCode= zipCode
+}
 
+// same properties
+// function areEqual(address1, address2) {
+    
+// }
+// same references
+function areSame(address1, address2) {
+    return address1=address2
+}
 
+// Lec 18 Exrecise Blog post Objects
 
+let post = {
+    title: 'a',
+    body: 'b',
+    author: 'c',
+    views: 10,
+    Comment: [
+        { author: 'a', body: 'b' },
+        {author: 'c', body: 'd'},
+    ],
+    isLive: true
+}
+console.log(post)
 
+// Lec 19 Exercise-> Cosntructor Fuction
 
+function Post(title, body, author) {
+    this.title = title
+    this.body = body
+    this.author = author
+    this.view = 0
+    this.Comments = []
+    this.isLive=false
+}
+console.log(new Post('a', 'b', 'c'))
 
+//Exercise 20 Price Range Objects
 
+let priceRanges = [
+    {
+        label: '$',
+        tooltip: 'Inexpensive',
+        minPerPerson: 0,
+        maxPerPerson:10
+    },
+    {
+        label: '$$',
+        tooltip: 'Moderate',
+        minPerPerson: 11,
+        maxPerPerson:20
+    },
+    {
+        label: '$$$',
+        tooltip: 'Expensive',
+        minPerPerson: 21,
+        maxPerPerson:50
+    }
+]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let restautrants = [
+    {averagePerPerson:5}
+]
