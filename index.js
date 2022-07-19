@@ -1151,3 +1151,823 @@ let priceRanges = [
 let restautrants = [
     {averagePerPerson:5}
 ]
+
+// Module 6 Arrays
+console.log('Module 6 Arrays')
+
+// Lec 1 Introduction
+
+    // Operations on arry
+        // Adding new elements
+        // Finding elements 
+        // Removing elementes
+        // Splitting arrays
+        // Combining arrays
+
+// Lec 2 Adding element in array
+
+console.log('Lec 2 Adding element in array')
+
+const numbers = [3, 4]
+
+// Adding element
+
+//End
+numbers.push(5, 6)
+console.log(numbers)
+
+// Beginning
+
+numbers.unshift(1,2)
+console.log(numbers)
+
+// Middle or at any position
+numbers.splice(2,0,'a','b')
+console.log(numbers)
+
+// Lec 3 Finding elements in array (Primitive)
+console.log('Lec 3 Finding elements in array (Primitive')
+
+// finding the element
+
+const arrnum = [1, 2, 3,1, 4]
+
+console.log(arrnum.indexOf(3)) // second parameter from where search will begin
+console.log(arrnum.lastIndexOf(1))
+
+// is array contain elements
+console.log(arrnum.lastIndexOf(1) !== -1)
+console.log(arrnum.includes(1))
+
+// Lec 4 Finding elements (Reference Type)
+console.log('Lec 4 Finding elements (Reference Type)')
+
+const courses = [
+    {id: 1, name: 'a'},
+    {id: 2, name: 'b'}
+]
+
+// here includes method will not work because they are of refrence type
+
+// console.log(courses.includes({id: 1, name: 'a'}))
+
+
+// callback fuction(or predict fuction)
+const course= courses.find(function (course) {
+    return course.name === 'a'
+})
+
+console.log(course)
+
+const index= courses.findIndex(function (course) {
+    return course.name === 'a'
+})
+console.log(index)
+
+
+// Lec 5 Arrow Fuction
+console.log('Lec 5 Arrow Fuction')
+
+
+// In ES6 we have better way to do the same thing as above Lec
+
+// Old Method
+const course1= courses.find(function (course) {
+    return course.name === 'a'
+})
+
+console.log(course)
+
+// More than one parameter
+const course2= courses.find((course) =>{
+    return course.name === 'a'
+})
+
+// Single parameter
+const course3= courses.find(course=>{
+    return course.name === 'a'
+})
+
+// No parameter
+const course4= courses.find(()=>{
+    return course.name === 'a'
+})
+
+// If Fuction is single line of code
+const course5= courses.find(()=> course.name === 'a'
+)
+
+// Lec 6 Removing Elemnets
+
+console.log('Lec 6 Removing Elemnets')
+
+const arrnum1 = [1, 2, 3, 4]
+
+// remove last element
+const last= arrnum1.pop()
+console.log(arrnum1)
+
+// Beginning
+const first = arrnum1.shift()
+console.log(arrnum1)
+
+// Midlle or at any position
+arrnum1.splice(2,2) // -> starting index, # of elements
+console.log(arrnum1)
+
+// Lec 7 Emptying an Array
+console.log('Lec 7 Emptying an Array')
+
+
+let arrnum2 = [1, 2, 3, 4]
+
+// Solution 1
+arrnum2 = []
+console.log(arrnum2)
+
+// Solution 2
+
+arrnum2.length = 0;
+console.log(arrnum2)
+
+// Solution 3
+arrnum2.splice(0, arrnum2.length)
+console.log(arrnum2)
+
+// Solution 4
+
+while (arrnum2.length > 0)
+        arrnum2.pop()
+
+console.log(arrnum2)
+
+// Lec 8 Combinig ad Slicing Arrays
+console.log('Lec 8 Combinig ad Slicing Arrays')
+
+// Combine two arrays
+
+const first1 = [1, 2, 3, 4]
+const second2 = [4, 5, 6]
+
+const combined = first1.concat(second2)
+console.log(combined)
+
+// Sclicing the Array
+
+const slice = combined.slice(2,4)
+console.log(slice)
+
+// Another way of slicing
+const slice1 = combined.slice(3)
+console.log(slice1)
+
+// Third Way
+const slice2 = combined.slice()
+console.log(slice2)
+
+// Lec 9 Spred Operator
+console.log('Lec 9 Spred Operator')
+
+// Better way to combine the two array
+// ... is spred operator
+// also add more elements in array easily while using spread operator
+
+const combined1 = [...first1,'a',...second2,'b']
+console.log(combined1)
+
+// const copy = combined1.slice()
+// other way of copying an array
+
+const copy  = [...combined1]
+console.log(combined1)
+
+// Lec 10 Iterating an Array 
+console.log('Lec 10 Iterating an Array ')
+
+
+// using for of loop
+
+const arrnum3 = [1, 2, 3]
+for (let num of arrnum3)
+    console.log(num)
+
+// using For each Method
+
+// when we call forEach() method this fuction will be called for every element of an array
+arrnum3.forEach(function(num){
+    console.log(num)
+})
+
+// using arrow fuction
+arrnum3.forEach((num)=>{
+    console.log(num)
+})
+arrnum3.forEach(num=>{
+    console.log(num)
+})
+
+arrnum3.forEach((num,index)=>{
+    console.log(num,index)
+})
+
+// Lec 11 Joining Array
+console.log('Lec 11 Joining Array')
+
+const arrnum4 = [1, 2, 3]
+const joined = arrnum4.join(',')
+console.log(joined)
+
+// Split method for string
+const string = 'This is my First message'
+const parts = string.split(' ')
+console.log(parts)
+
+// Joining the string back
+const combine2 = parts.join('-')
+console.log(combine2)
+
+// This is used in URL to create URL Slug
+
+// Lec 12 Sorting Arrays
+
+console.log("Lec 12 Sort an Array")
+
+const arrnum5 = [2, 3, 1]
+arrnum5.sort()
+console.log(arrnum5)
+
+// reversing the array
+arrnum5.reverse 
+console.log(arrnum5)
+
+// Sorting objects
+
+const Courses = [
+    { id: 1, name: 'Node.js' },
+    { id: 3, name: 'JavaScript'}
+
+]
+
+// Using arrow fuction
+Courses.sort((a, b) => {
+    // a<b
+    // a>b
+    // a===b
+
+    if (a.name < b.name) return -1
+    if (a.name > b.name) return 1
+    return 0
+})
+console.log(Courses)
+
+// Lec 13 Testing the Elements of an Array
+
+const arrnum6 = [1, 2, 3]
+
+// Checking if all number in array are positive
+// checking all
+const OnePositive = arrnum6.every(function(value){
+    return value >= 0
+})
+
+console.log(OnePositive)
+
+// checking some ( at least one)
+
+const atleastOnePositive = arrnum6.some(function(value){
+    return value >= 0
+})
+console.log(atleastOnePositive)
+
+// Lec 14 Filtering an Array
+console.log('Lec 14 Filtering an Array')
+
+// retruning only the positive elemnts of an array
+
+const arrnum7 = [1, -1, 2, 3]
+
+const filtered= arrnum7.filter(function (value) {
+    return value>=0
+})
+
+console.log(filtered)
+// in real world scenario we use object so it may be required to filter those objects
+
+// Lec 15 Mapping an Array
+console.log('Lec 15 Mapping an Array')
+
+
+const arrnum8= [1,-1,2,3]
+let sum = 0
+
+for (let n of arrnum8)
+    sum += n
+console.log(sum)
+
+// using reduce Method
+
+const sum1 = arrnum8.reduce((accumulator, currentValue) => {
+    return accumulator+ currentValue
+}, 0)
+console.log(sum1)
+
+
+const sum2 = arrnum8.reduce((accumulator, currentValue) => {
+    return accumulator+ currentValue
+})
+console.log(sum2)
+
+// other Method
+const sum3 = arrnum8.reduce((accumulator, currentValue) => accumulator+ currentValue)
+console.log(sum3)
+
+
+// Lec 17 Exercise Array from Range
+
+console.log('Lec 17 Exercise Array from Range')
+
+const customArray = arrayFromRange(1, 4)
+console.log(customArray)
+
+
+function arrayFromRange(min, max) {
+    const arr = []
+    
+    for (let i = min; i <= max; i++){
+            arr.push(i)
+    }
+    return arr
+}
+
+console.log(arrayFromRange(-10, 6))
+
+// Lec 18 Includes
+console.log('Lec 18 Includes')
+
+const arrnum9 = [1,2,3,4]
+console.log(arrnum9.includes(1))
+
+function Includes(array,num) {
+    for (let n of array)
+        if (n === num) return true
+    return false
+}
+
+console.log(Includes(arrnum9, 1))
+
+// Lec 19 Exercise Execpt
+console.log('Lec 19 Exercise Execpt')
+
+const arrnum10 = [1, 2, 3, 4]
+const output = except(arrnum10, [1])
+console.log(output)
+
+function except(array, exluded) {
+    const output = []
+    
+    for (let element of array)
+        if (!exluded.includes(element))
+            output.push(element)
+    return output
+}
+
+// Lec 20 Exercise Moving an Element 
+console.log('Lec 20 Exercise Moving an Element ')
+
+const arrnum11 = [1, 2, 3, 4]
+
+const output1 = move(arrnum11, 1,1)
+
+console.log(output1)
+
+//To Display error on the console
+// console.error('Invalid')
+function move(array, index, offset) {
+    if (offset >= array.length) {
+        console.error('Invalid Offeset')
+        return
+    }
+
+    // first select the element on the given index than delete it and store it in a variable
+    //Q How to delete the element on the given position in an array??
+
+    const del= array[index]
+    array.splice(index, 1) // -> starting index, # of elements to delete
+
+
+    // second push that element to the offest position
+    //Q How to push the element on the given postion in the array??
+    array.splice(index + offset,0,del)
+
+return array
+}
+
+// Lec 21 Exercise Count Occurences
+
+const arrnum12 = [1, 2, 3, 4]
+
+const count = countOccurences(arrnum12,1)
+
+console.log(count)
+
+function countOccurences(array, searchElement) {
+    let count=0
+    for (let n of array)
+        if (n == searchElement)
+            count++
+    return count
+
+    // array.reduce((accumulator, current) => {
+    //     const Occurences = (current === searchElement) ? 1 : 0
+    //     return accumulator + Occurences
+    // },0)
+}
+
+// Lec 22 Get Max
+console.log('Lec 22 Get Max')
+
+const arrnum13 = [1, 2, 3, 4]
+
+const max1= getMax(arrnum13)
+
+console.log(max1)
+
+function getMax(array) {
+    // let max = array[0]
+    // for (let i = 1; i < array.length; i++)
+    //     if (array[i] > max)
+    //         max = array[i]
+    // return max   
+    
+    array.reduce((accumulator,current)=> {
+        if (current > accumulator) return current
+        
+    return accumulator
+    })
+}
+
+// Lec 23 Exercise Movies
+console.log('Lec 23 Exercise Movies')
+
+const Movies = [
+    {title: 'a', year: 2018, rating: 4.5},
+    {title: 'b', year: 2018, rating: 4.7},
+    {title: 'c', year: 2018, rating: 3},
+    {title: 'd', year: 2018, rating: 4.5}
+]
+
+// chaining
+const titles = Movies
+    .filter(m => m.year == 2018 && m.rating >= 4)
+    .sort((a, b) => a.rating - b.rating
+    // simple way
+    // a < b => -1
+    // a == b => 0
+    // a > b => 1
+)   .reverse()
+    .map(m => m.title)
+    
+console.log(titles)
+
+// Moudule 7 Fuctions
+console.log('Moduele 7')
+
+
+// Lec 1 Declaration vs Expression
+
+console.log('Lec 1 Declaration vs Expression')
+
+// Fuction Declaration
+
+function walk() {
+    console.log('walk')
+}
+
+// Named Fuction Expression
+
+let run = function walk() {
+    console.log('run')
+}
+//Anonymous Fuction Expression
+let run2 = function() {
+    console.log('run')
+}
+let x7 = 1
+
+run2()
+
+let move2 = run // Referencing to same fuction
+move2()
+
+// Lec 2  Hoisting
+console.log('Lec 2  Hoisting')
+
+// Fuction Declaration
+walk()
+function walk() {
+    console.log('walk')
+}
+
+// Named Fuction Expression
+// run3() we can't call it
+let run3 = function walk() {
+    console.log('run')
+}
+
+
+// Note(VI) = Javascript moves all the fuction declaration code on the top before executing the code called Hoisting
+
+//Lec 3 Arguments
+
+console.log('Lec 3 Arguments')
+
+function sum7 (a, b) {
+    return a + b // 1+ Undifined
+
+}
+
+// JS fuctions are dynamic in nature too
+
+console.log(sum7(1,2)) // sum7(1), sum7(1,2,3,4)
+
+// Argument Object for taking many arguments
+
+function sum8() {
+    
+    let total = 0;
+    for (let value of arguments)
+        total+=value
+    return total // 1+ Undifined
+
+}
+
+console.log(sum8(1, 2, 4, 32, 23, 32))
+
+// Lec 4 Rest Operator
+console.log('Lec 4 Rest Operator')
+
+// Usin rest opearator (...args)
+
+function sum9(...args) {
+    
+    console.log(args)
+}
+
+console.log(sum9(123, 24, 1, 12, 2, 12, 2, 12, 21, 2))
+
+// Method to add all arguments
+function sum10(...args) {
+    
+    return args.reduce((a,b)=> a+b)
+}
+
+console.log(sum10(123, 24, 1, 12, 2, 12, 2, 12, 21, 2))
+
+// Caculate toatal cost of items in shopping carts
+
+// Note(VI) -> we can't have any parameters after the rest operator that's why it is called so as rest opreator
+function sum11(discount, ...prices) {
+    const total = prices.reduce((a, b) => a + b)
+    return total * (1-discount)
+}
+console.log(sum11(0.1, 24, 1, 12, 2, 12, 2, 12, 21, 2))
+
+// Lec 5 Default Parameters
+console.log('Lec 5 Default Parameters')
+
+// Fuction with default parameters
+
+// Note-> It is importan to assingn deafult parameter after defining one parameter as default
+function interest(principal, rate=3.5, year=5) {
+
+    // Method to set default value
+    // rate = rate || 3.5
+    return principal* rate/100*year
+}
+
+console.log(interest(10000, 3.3, 5))
+
+
+// Lec 6 Getters and Setters
+console.log('Lec 6 Getters and Setters')
+
+const person3 = {
+    firstName : 'Anurag',
+    lastName: 'Yadav',
+    //fullName: function(){}
+    get fullName() {
+        return `${person3.firstName} ${person3.lastName}`
+    },
+    set fulllName(value) {
+        const parts = value.split('')
+        this.firstName = parts[0]
+        this.lastName= parts[1]
+    }
+}
+
+// This is read only we can't change fullName of person
+// other thing is we don't want to call fuction every time we wnat to use it as property
+// getter and setter can do this
+
+// Getters => Access Properties in objects
+// Setters => change (mutate) them
+
+console.log(person3.fullName)
+
+// Lec 7 Try and Catch
+
+console.log('Lec 7 Try and Catch')
+
+const person4 = {
+    firstName : 'Anurag',
+    lastName: 'Yadav',
+    //fullName: function(){}
+    set fulllName(value) {
+        if (typeof value !== 'string')
+            // Exception(e)
+            throw new Error('Value is not a string')
+        const parts = value.split('')
+        if (parts.length !== 2)
+            throw new Error('Enter a first and last name')
+        this.firstName = parts[0]
+        this.lastName= parts[1]
+    }
+}
+
+try {
+    //person.fullName = null
+    person.fullName = ''
+}
+catch (e) {
+    alert(e)
+}
+console.log(person4.fullName)
+
+// Lec 8 Local vs Global Scope
+
+console.log('Lec 8 Local vs Global Scope')
+
+function start() {
+    // Local Scope
+    const message= 'hi'
+    if (true) {
+        // Local Scope
+        const another = 'bye'
+    }
+}
+
+// Lec 9 Let vs Var
+
+console.log('Lec 9 Let vs Var')
+
+// let has limited scope and var(scope have within the fuction) have global scope
+
+// var -> fuction scoped
+// let, const-> block scoped
+
+function start2() {
+    for (let k = 0; k < 5; k++)
+        console.log(k)
+    
+    console.log(k)
+}
+start2()
+
+function start1() {
+    for (var i = 0; i < 5; i++){
+        console.log(i)
+    }
+    console.log(i)
+}
+start1()
+
+// Global scoped
+// var color = 'red' // used in window object(it is attached in window object)
+
+// Local scope
+// let age= 30
+
+// Lec 10 The this keyword
+
+console.log('Lec 10 The this keyword')
+
+// this-> references the object that executing the current fuction
+
+// method -> obj
+// fuction -> global (window, global)
+
+const video = {
+    title: 'a',
+    play() {
+        console.log(this) // this references video object
+    }
+}
+video.stop = function () {
+    console.log(this)
+}
+video.stop()
+
+
+function Video(title) {
+    this.title = title
+    console.log(this)
+}
+// if you call a fuction using new keyword this references to the empty object
+const v = new Video('b')// {}
+
+
+const video1= {
+    title:'a',
+    tags : ['a', 'b', 'c'],
+        showTags(){
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag)
+        }, this)
+    }    
+    
+}
+
+video1.showTags()
+
+// Lec 11 Changing This
+console.log('Lec 11 Changing This')
+
+const video2= {
+    title:'a',
+    tags : ['a', 'b', 'c'],
+    showTags() {
+        const self = this
+        this.tags.forEach(function(tag) {
+            console.log(self.title, tag)
+        }, this)
+    }    
+    
+}
+video2.showTags()
+
+function playVideo() {
+    console.log(this)
+}
+
+//playVideo.call({ name: 'Anurag' })
+playVideo.apply({ name: 'Anurag' })
+
+// returns the fuction
+playVideo.bind({ name: 'Anurag' })()
+playVideo()
+
+const video3= {
+    title:'a',
+    tags : ['a', 'b', 'c'],
+    showTags() {
+        const self = this
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag)
+        }.bind(this))
+    }    
+    
+}
+video3.showTags()
+
+const video4= {
+    title:'a',
+    tags : ['a', 'b', 'c'],
+    showTags() {
+        const self = this
+        this.tags.forEach(tag=> {
+            console.log(this.title, tag)
+        })
+    }    
+    
+}
+video4.showTags()
+
+// Lec 12 Exercise Sum to Arguments
+
+console.log(sum12(1, 2, 3, 4))
+
+function sum12(...items) {
+    return items.reduce((a,b)=> a+b)
+}
+// passing array
+console.log(sum13([1,2,3,4]))
+function sum13(...items) {
+    if (items.length === 1 && Array.isArray(items[0]))
+        items= [...items[0]]
+    return items.reduce((a,b)=> a+b)
+}
+
+// Lec 13 Area of Circle
+
+console.log('Lec 13 Area of Circle')
+
+const circle9 = {
+    radius: 1,
+    get area() {
+        return Math.PI*this.radius* this.radius
+    }
+}
+
+console.log(circle9.area)
+
+// Lec 14 Error Handling
