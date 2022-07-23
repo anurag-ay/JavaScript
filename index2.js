@@ -233,7 +233,7 @@ x.value = 20
 
 // now creating a fuction which use refrence type varables
 
-let obj = {value :10}
+let obj = {value : 10}
 
 function increament(obj) {
     obj.value++
@@ -241,6 +241,198 @@ function increament(obj) {
 
 increament(obj)
 console.log(obj)
+
+// Lec 13 Adding and removing Properties
+
+console.log('Lec 13 Adding and removing Properties')
+
+function Circle3(radius) {
+    this.radius = radius
+    this.draw = function () {
+        console.log('draw')
+    }
+}
+
+const myCircle3 = new Circle3(10)
+
+// adding the property to the object
+
+myCircle3.location = {x:1}
+// other way using bracket notation
+myCircle3['location'] = { x: 1 }
+
+
+// removing property from object
+
+delete myCircle3.location
+// using bracket notation
+delete myCircle3[location]
+
+// Lec 14 Enumerating properties of Object
+console.log('Lec 14 Enumerating properties of Object')
+
+function Circle4(radius) {
+    this.radius = radius
+    this.draw = function () {
+        console.log('draw')
+    }
+}
+
+const myCircle4 = new Circle4(10)
+
+// using for in loop
+
+for (let key in myCircle4) {
+    console.log(key, myCircle4[key])
+}
+
+// another method to get all the keys
+const keys = Object.keys(myCircle4)
+console.log(keys)
+
+// finding the key in object
+
+if ('radius' in circle)
+    console.log('Circle has a radius.')
+
+// Lec 15 Abstraction
+console.log('Lec 15 Abstraction')
+
+
+function Circle5(radius) {
+    this.radius = radius
+    // defining the new function
+    this.computeOptimumLocation = function () {
+        console.log('s')
+    }
+    this.draw = function () {
+        this.computeOptimumLocation()
+        console.log('draw')
+    }
+}
+
+const myCircle5 = new Circle5(10)
+myCircle5.draw()
+// Note if use use abstraction efficiettly it will decrease the correction of code everywehere in porgram
+
+
+// Lec 16 Private properties and Methods
+console.log('Lec 16 Private Properties and Method')
+
+// Making Method private
+
+function Circle6(radius) {
+    this.radius = radius
+    // defining the new function
+    // using let to make variables private
+    let defaultLocation = {x: 0, y: 0}
+    let.computeOptimumLocation = function (factor) {
+        console.log('s')
+    }
+    this.draw = function () {
+        let x,y
+        computeOptimumLocation(0.1)
+        // this.radius
+        console.log('draw')
+    }
+}
+// Clouser in Javascript nested fuction can access the variable of outer fuciton
+
+// Lec 17 Getter and Setter
+
+console.log('Lec 17 Getter and Setter')
+
+
+function Circle7(radius) {
+    this.radius = radius
+    let defaultLocation = {x: 0, y: 0}
+    let.computeOptimumLocation = function (factor) {
+        console.log('s')
+    }
+    this.draw = function () {
+
+        console.log('draw')
+    }
+
+    // Getter and setter
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function () {
+            return defaultLocation
+        },
+        // setter
+        set: function (value) {
+            if (!value.x || !value.y)
+                throw new Error('Invalid Location')
+            defaultLocation = value
+        }
+    })
+}
+
+// Lec 19 Exercise Stop Watch
+console.log('Lec 19 Exercise Stop Watch')
+
+// Module 3 Prototype
+
+// Lec 1 Lec 1 Inheritence
+console.log('Lec 1 Inheritence')
+
+//let say their are two object circle and square and have common function computeOptimumLocation() without inheritenct we need to write it again and again and have to modify in both classes if we moidify some fuctionality
+
+// so to reduce that we can use inheritence
+
+// shape <- class can be inherited by both circle and square class
+
+// shape called as parent (base, super) class
+// relation is called as is-A a relationhsip
+
+// circle, square -> derived class, parent class, sub class
+
+// Note-> in javaScript we don't have classes
+
+// Lec 2 Pototypical inheritence
+// Method to implement inheritence
+// prototype(parent)
+console.log('Lec 2 Pototypical inheritence')
+
+// Prototype is just a regular object in memory
+// check it into empty object
+
+// Lec3 Multilevel Inheritence
+console.log('Lec 3 Multilevel Inheritence')
+// Check it into array object
+
+// Lec 4 Property Descriptor
+console.log('Lec 4 Property Decriptor')
+// Checkinng the prototype properties
+
+let person = { name: 'Anurag' }
+let objectBase = Object.getPrototypeOf(person)
+console.log(objectBase)
+let descriptor = Object.getOwnPropertyDescriptor(objectBase, 'toString')
+console.log('descriptor')
+// we can change the internal implementation of objects
+Object.defineProperty(person, 'name', {
+    writable :false
+})
+
+// Lec 5 Constructor Prototypes
+console.log('Lec 5 Constructor Prototypes')
+
+// Lec 6 Prototype vs Instance Members
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
