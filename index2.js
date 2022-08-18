@@ -439,6 +439,344 @@ console.log('Lec 5 Constructor Prototypes')
 
 
 
+// Module 6 Classes
+console.log("MOdule 6 Classes")
+
+
+// Lec 1 ES6 Classes
+
+console.log("ES6 Classes")
+
+class circle10{
+    constructor(radius){
+        this.radius = radius;
+    }
+
+    draw(){
+        console.log(this.radius)
+    }
+}
+
+const c = new circle10(1);
+c.draw()
+
+// Lec 2 Hoisting
+
+console.log("Lec 2 Hoisting")
+// Note in Fuction expression fuctions are not hoisted
+
+// example
+
+// hoisted
+
+sayHello(); // we can call above it becaus fuctions are hoisted
+function sayHello() { }
+
+// Expression are not hoisted
+
+// goodbye() // this will not work because this is encorporated in fuction expression
+//const saygoodbye = fuction(){ }
+
+
+// Note class declaration and expressions are not hoisted
+// Lec 3 Static Methods
+console.log("lec 3 Static Methods")
+
+class Circle{
+
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    // Instance Method
+    // they are acessible to the Objects or Instances
+    draw() {
+        
+    }
+
+    // Static Method
+    // static Method are only accesible to class and used as utility Method
+    static parse(str) {
+        const radius = JSON.parse(str);
+        return new Circle(radius);
+    }
+}
+
+const cir = Circle.parse('"{radius:1}"');
+console.log(circle);
+
+// real world example is Math built in Object of Java Script.
+
+
+// Lec 4 This keyword
+console.log("Lec 4 This Keyword")
+
+const Circle8 = function () {
+    this.draw = function() {console.log(this)}
+}
+
+const c1 = new Circle8();
+
+// Method call
+c1.draw();
+
+//or
+// we can do this beacause this is poiting to the c1 object
+
+// Note-> by default this is pointing to the window object
+// we can prevent this using strict mode
+// 'use strict';
+const draw = c1.draw;
+draw()
+
+// Note in Classes by default body of the class is execute in strict mode.
+
+class Circle9 {
+    draw1() {
+        console.log(this)
+    }
+}
+
+const c2 = new Circle9()
+const draw1 = c2.draw1;
+draw1();
+
+// Lec 5 Private members using symbols
+console.log("Lec 5 Private members using symbols")
+// Method 1 conentional method using _ before name of identifier
+// Method 2 using symbols
+const _radius = Symbol()
+const _draw = Symbol()
+
+class Circle11{
+    constructor(radius) {
+        this[_radius]=radius
+    }
+    [_draw]() {
+    
+    }
+}
+const c3 = new Circle(1)
+// symbol method is not fool proof
+// we can still access the member of the class
+// const key = Object.getOwnPropertySymbols(c)[0]
+// console.log(c[key])
+
+// Lec 6 Private members using weak map
+console.log("Lec 6 Private members using weak map")
+// weak map->they are the dictornary keys are object and values can be anything.
+// in this keys are weak thats why it is called weak map if no reference provided to the keys they will act as a grbage collector.
+
+const _radius1 = new WeakMap();
+// another private member
+
+const _move = new WeakMap()
+
+
+
+class Circle12{
+    constructor(radius) {
+        //this.radius = radius;
+
+        // for setting the value
+        _radius1.set(this, radius);
+
+        // _move.set(this, function () {
+        //     console.log('move', this)
+        // })
+        // because arrow fuction by default use this which is inherited from the same fuction
+        _move.set(this,()=> {
+            console.log('move', this)
+        })
+    }
+    draw() {
+        //getting value
+        console.log(_radius.get(this))
+        
+        // getting value
+        _move.get(this)();
+        console.log('draw')
+    }
+}
+const c4 = new Circle12(1)
+console.log(c4)
+console.log(c4.draw)
+
+// lec 7 Getter and Setter
+
+console.log("lec 7 Getter and Setter")
+
+const _radius2 = new WeakMap();
+
+class Circle13{
+    constructor(radius) {
+        _radius1.set(this, radius);
+
+    }
+
+    // to access method as property
+
+    get radius() { 
+        return radius().get(this)
+    }
+    set radius2(value){
+            if (value <= 0) throw new Error('Invalid radius')
+            _radius2.set(this,value)
+        }
+}
+const c5 = new Circle13(1);
+console.log(c.radius)
+
+console.log("Lec 8 Inheritence")
+
+class Shape{
+    constructor(color) {
+        this.color = color
+    }
+
+    move() {
+        console.log('move');
+    }
+}
+
+class Circle14 extends Shape{
+    constructor(color, radius) {
+        super(color)
+        this.radius= radius
+    }
+    draw() {
+        console.log('draw')
+    }
+}
+const c6 = new Circle14('red', 1);
+console.log(c6)
+
+
+
+// Lec 8
+console.log("Lec 8 Method Riding")
+
+class Shape1{
+    move() {
+        console.log('move');
+    }
+}
+
+class Circle15 extends Shape1{
+    // if you want to use parent move method
+    // super.move()
+    // Method overriding
+    move() {
+        console.log('circle move');
+    }
+}
+const c7= new Circle15()
+console.log(c7)
+
+
+
+// Lec 9
+console.log("Lec 9 Exerice")
+
+// Implement stack
+    // push
+    // pop
+    // peek
+
+
+const _item = new WeakMap();
+class Stack{
+    constructor() {
+        _item.set(this,[])
+    }
+
+    push(obj) {
+        _item.get(this).push(ob);
+    }
+    pop() {
+        if (_item.get(this).length === 0)
+            throw new Error('stack is empty')
+        return items.pop()
+    }
+
+    peek() {
+        const items = _item.get(this)
+        if (items.lenght===0)
+            throw new Error('Stack is empty')
+        return items[items.lenght - 1]
+    }
+
+    get count() {
+        return _item.get(this).length
+    }
+}
+
+
+
+
+
+// Module 6 Modules
+
+// Lec1
+console.log("Lec1 Modules")
+
+// Modularity-> breaking the software in small chunks of modules of code
+// Benifits of Modularity
+    // code Maintanibility
+    // code Reusibility
+    // abstraction
+
+// types of module used
+    // commonJS-> Nodejs
+    // ES6 Module -> Browser
+
+
+
+// Lec2
+
+console.log("lec 2CommonJs Modules")
+
+// importing from Circle module
+const Circle16 = requre('./circle')
+
+const c8= new Circle16(10)
+c.draw()
+
+
+// Lec3
+console.log("lec 3 ES6 Modules")
+
+
+// import { Circle } from './circle'
+// const c9 = new Circle(10)
+// c9.draw();
+
+// Lec4
+console.log("lec 4 ES6 tooling")
+// transpiler-> translator + compiler use to convert javascript code to browser understandable code
+// ex-> Bable
+// Bundler-> it is responsible for bundle all the javascript file into one
+// ex- webpack
+
+// Lec5
+console.log("lec 5 Babel")
+
+// install bable and use of it
+
+// Lec6
+console.log("lec 6 Webpack")
+
+// use of Webpack
+
+
+
+
+
+
+
+
+
+
 
 
 
