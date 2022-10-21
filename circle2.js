@@ -4,7 +4,8 @@ const _radius = new WeakMap()
 
 // Public Interface
 
-class Circle{
+// exporting in ES6
+export class Circle{
     constructor(radius) {
         _radius.set(this, radius)
     }
@@ -12,7 +13,3 @@ class Circle{
         console.log('Circle with radius'+ _radius.get(this))
     }
 }
-
-// exporting this module
-
-module.exports= Circle
